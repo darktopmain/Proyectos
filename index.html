@@ -1,12 +1,30 @@
 
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <!-- Indica que el documento es HTML5 -->
+<html lang="es"> <!-- Define el idioma principal del documento como español -->
 <head>
-    <meta charset="UTF-8">
-    <title>Hola Mundo</title>
+  <meta charset="UTF-8" /> <!-- Configura la codificación de caracteres (soporta acentos y japonés) -->
+  <title>Cambiar Hola Mundo</title> <!-- Título que aparece en la pestaña del navegador -->
 </head>
 <body>
-    <h1>¡Hola Mundo!</h1>
-    <h1>¡Arduino!</h1>
+  <!-- Encabezado que contiene el texto que vamos a cambiar -->
+  <h1 id="saludo">¡Hola Mundo!</h1>
+
+  <!-- Botón que el usuario presiona para cambiar el texto -->
+  <button id="btn-cambiar">Cambiar a inglés</button>
+
+  <!-- Bloque de JavaScript que hace que el botón funcione -->
+  <script>
+    // Obtiene la referencia al elemento <h1> por su id "saludo"
+    const saludo = document.getElementById('saludo');
+
+    // Obtiene la referencia al botón por su id "btn-cambiar"
+    const boton = document.getElementById('btn-cambiar');
+
+    // Escucha el evento "click" del botón
+    boton.addEventListener('click', () => {
+      // Cambia el contenido de texto del <h1> a inglés
+      saludo.textContent = 'Hello World!';
+    });
+  </script>
 </body>
 </html>
