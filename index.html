@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rifa & Asociados</title>
+
+    <style>
+
+        /* ======== FONDO ELEGANTE ======== */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ececec, #f7f7f7);
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+
+        /* ======== LOGO ======== */
+        .logo-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo-container img {
+            width: 260px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.2);
+        }
+
+        /* ======== TARJETAS DE INFORMACIÓN ======== */
+        .card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* ======== GRID DE BOLETOS ======== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(15, 1fr);
+            gap: 8px;
+            width: 100%;
+            max-width: 1050px;
+            max-height: 450px;
+            overflow-y: auto;
+            margin: 30px auto 20px auto;
+            padding-right: 10px;
+        }
+
+        .boleto {
+            padding: 9px;
+            background: #1f8f1f;
+            color: white;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.15s;
+            user-select: none;
+            font-weight: bold;
+        }
+
+        .boleto:hover {
+            background: #26aa26;
+        }
+
+        .boleto.seleccionado {
+            background: #d62b2b !important;
+        }
+
+        /* Ocupado = negro + deshabilitado */
+        .boleto.ocupado {
+            background: #cfcfcf !important;
+            color: #333 !important;
+            cursor: not-allowed !important;
+            box-shadow: none;
+        }
+
+        /* ======== BOTÓN WHATSAPP ======== */
+        #whatsappBtn {
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            font-size: 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+        }
+
+        #whatsappBtn:hover {
+            background: #1ebe5c;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGO -->
+    <div class="logo-container">
+        <img src="NOMBRE-DE-TU-IMAGEN.png" alt="Logo">
+    </div>
+
+    <h1 style="margin-bottom:5px;">Rifas & Asociados</h1>
+    <p style="font-size:18px; margin-top:0;">Selecciona tus boletos disponibles</p>
+
+    <!-- SECCIÓN DE INFORMACIÓN DE PAGO -->
+    <div class="card" style="margin-top: 35px;">
+        <h2 style="background:black; color:white; padding:12px; border-radius:8px;">INFORMACIÓN DE PAGO</h2>
+
+        <p style="font-size:17px;">Realiza el pago en cualquiera de las siguientes cuentas:</p>
+
+        <div style="text-align:left; margin-top:20px; font-size:17px;">
+            <b>BANCO:</b> MERCADO PAGO W<br>
+            <b>NOMBRE:</b> JOSE ALBERTO HERNANDEZ SANTIAGO<br>
+            <b>TARJETA:</b> 722969010066514952
+            <hr>
+
+            <b>BANCO:</b> BBVA<br>
+            <b>NOMBRE:</b> JUAN <br>
+            <b>TARJETA:</b> 4152 3141 0727 1820
+            <hr>
+
+         
+        </div>
+
+        <p style="font-size:18px; margin-top:20px;"><b>WhatsApp para dudas:</b></p>
+        <p style="font-size:22px; color:#25D366; font-weight:bold;">(899) 106 2860</p>
+    </div>
+
+    <!-- GRID DE BOLETOS -->
+    <h2 style="margin-top:40px;">Selecciona tus boletos</h2>
+
+    <div class="grid" id="grid"></div>
+
+    <!-- BOTÓN WHATSAPP -->
+    <button id="whatsappBtn">Enviar por WhatsApp</button>
+
+    <script>
+        const grid = document.getElementById("grid");
+
+        async function cargarBoletos() {
+            try {
+                const respuesta = await fetch("boletos.json");
+                const datos = await respuesta.json();
+
+                const ocupados = datos.ocupados || [];
+
+                for (let i = 1; i <= 1500; i++) {
+                    const btn = document.createElement("div");
+                    btn.classList.add("boleto");
+
+                    btn.innerHTML = `<span class="no-select">${i}</span>`;
+
+                    if (ocupados.includes(i)) {
+                        btn.classList.add("ocupado");
+                    } else {
+                        btn.addEventListener("click", () => {
+                            btn.classList.toggle("seleccionado");
+                        });
+                    }
+
+                    grid.appendChild(btn);
+                }
+
+            } catch (error) {
+                console.error("Error al cargar boletos.json:", error);
+            }
+        }
+
+        cargarBoletos();
+
+        // BOTÓN WHATSAPP
+        document.getElementById("whatsappBtn").addEventListener("click", () => {
+            const seleccionados = [];
+
+            document.querySelectorAll(".boleto").forEach((b, index) => {
+                if (b.classList.contains("seleccionado")) {
+                    seleccionados.push(index + 1);
+                }
+            });
+
+            if (seleccionados.length === 0) {
+                alert("No has seleccionado ningún boleto");
+                return;
+            }
+
+            const numero = "528991062860";
+            const mensaje = `Elegí los boletos: ${seleccionados.join(", ")}`;
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+            window.open(url, "_blank");
+        });
+    </script>
+
+</body>
+</html>
