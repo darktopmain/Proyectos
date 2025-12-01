@@ -1,29 +1,41 @@
 
-<!DOCTYPE html> <!-- Indica que el documento es HTML5 -->
-<html lang="es"> <!-- Define el idioma principal del documento como español -->
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8" /> <!-- Configura la codificación de caracteres (soporta acentos y japonés) -->
-  <title>Cambiar Hola Mundo</title> <!-- Título que aparece en la pestaña del navegador -->
+  <meta charset="UTF-8" />
+  <title>Multilenguaje</title>
 </head>
 <body>
-  <!-- Encabezado que contiene el texto que vamos a cambiar -->
+  <!-- El texto principal que se actualizará -->
   <h1 id="saludo">¡Hola Mundo!</h1>
 
-  <!-- Botón que el usuario presiona para cambiar el texto -->
-  <button id="btn-cambiar">Cambiar a inglés</button>
+  <!-- Tres botones. Usamos data-lang para indicar el idioma objetivo -->
+  <button data-lang="es">Español</button>
+  <button data-lang="en">Inglés</button>
+  <button data-lang="ja">Japonés</button>
 
-  <!-- Bloque de JavaScript que hace que el botón funcione -->
   <script>
-    // Obtiene la referencia al elemento <h1> por su id "saludo"
+    // Referencia al <h1> que muestra el saludo
     const saludo = document.getElementById('saludo');
 
-    // Obtiene la referencia al botón por su id "btn-cambiar"
-    const boton = document.getElementById('btn-cambiar');
+    // Diccionario/objeto con las traducciones de la frase
+    const traducciones = {
+      es: '¡Hola Mundo!',
+      en: 'Hello World!',
+      ja: 'こんにちは世界' // Japonés: "Kon'nichiwa sekai"
+    };
 
-    // Escucha el evento "click" del botón
-    boton.addEventListener('click', () => {
-      // Cambia el contenido de texto del <h1> a inglés
-      saludo.textContent = 'Hello World!';
+    // Seleccionamos todos los botones que tienen el atributo data-lang
+    const botones = document.querySelectorAll('button[data-lang]');
+
+    // Recorremos cada botón y le asignamos un evento "click"
+    botones.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Obtenemos el idioma del atributo data-lang del botón presionado
+        const lang = btn.getAttribute('data-lang');
+        // Cambiamos el texto del saludo usando el diccionario
+        saludo.textContent = traducciones[lang];
+      });
     });
   </script>
 </body>
