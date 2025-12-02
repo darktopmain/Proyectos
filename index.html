@@ -11,7 +11,8 @@
    <button data-lang="es">Español</button>
   <button data-lang="en">Inglés</button>
   <button data-lang="ja">Japonés</button>
- <p> el plc es un dispositivo electronico utlizado para los procesos industriales
+   <button data-lang="en2">ingles2</button>
+ <p id="prueba">   el plc es un dispositivo electronico utlizado para los procesos industriales
 </p>
 <p> sdsdsd000</p>
 <p> 1213131
@@ -24,9 +25,10 @@
   <script>
     // Referencia al <h1> que muestra el saludo
     const saludo = document.getElementById('saludo');
-
+const prueba = document.getElementById('prueba');
     // Diccionario/objeto con las traducciones de la frase
     const traducciones = {
+      en2: 'A PLC is an electronic device used for industrial processes',
       es: '¡Hola Mundo!',
       en: 'Hello World!',
       ja: 'こんにちは世界' // Japonés: "Kon'nichiwa sekai"
@@ -42,6 +44,7 @@
         const lang = btn.getAttribute('data-lang');
         // Cambiamos el texto del saludo usando el diccionario
         saludo.textContent = traducciones[lang];
+        prueba.textContent = traducciones[lang];
       });
     });
   </script>
