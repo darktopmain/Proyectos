@@ -6,47 +6,49 @@
   <title>Multilenguaje</title>
 </head>
 <body>
-  <!-- El texto principal que se actualizará -->
+  <!-- Texto principal -->
   <h1 id="saludo">¡Hola Mundo!</h1>
-   <button data-lang="es">Español</button>
+
+  <!-- Botones para cambiar idioma -->
+  <button data-lang="es">Español</button>
   <button data-lang="en">Inglés</button>
   <button data-lang="ja">Japonés</button>
-   <button data-lang="en2">ingles2</button>
- <p id="prueba">   el plc es un dispositivo electronico utlizado para los procesos industriales
-</p>
-<p> sdsdsd000</p>
-<p> 1213131
-</p>
-<p> 2132saacc
-</p>
-  <!-- Tres botones. Usamos data-lang para indicar el idioma objetivo -->
- 
+
+  <!-- Párrafo -->
+  <p id="prueba">El PLC es un dispositivo electrónico utilizado para los procesos industriales</p>
 
   <script>
-    // Referencia al <h1> que muestra el saludo
+    // Referencias a los elementos
     const saludo = document.getElementById('saludo');
-const prueba = document.getElementById('prueba');
-    // Diccionario/objeto con las traducciones de la frase
+    const prueba = document.getElementById('prueba');
+
+    // Diccionario con dos textos por idioma: título y párrafo
     const traducciones = {
-      en2: 'A PLC is an electronic device used for industrial processes',
-      es: '¡Hola Mundo!',
-      en: 'Hello World!',
-      ja: 'こんにちは世界' // Japonés: "Kon'nichiwa sekai"
+      es: {
+        titulo: '¡Hola Mundo!',
+        texto: 'El PLC es un dispositivo electrónico utilizado para los procesos industriales'
+      },
+      en: {
+        titulo: 'Hello World!',
+        texto: 'A PLC is an electronic device used for industrial processes'
+      },
+      ja: {
+        titulo: 'こんにちは世界', // Japonés: "Kon’nichiwa sekai"
+        texto: 'PLCは産業プロセスに使用される電子機器です'
+      }
     };
 
-    // Seleccionamos todos los botones que tienen el atributo data-lang
+    // Seleccionamos todos los botones con data-lang
     const botones = document.querySelectorAll('button[data-lang]');
 
-    // Recorremos cada botón y le asignamos un evento "click"
+    // Asignamos evento a cada botón
     botones.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Obtenemos el idioma del atributo data-lang del botón presionado
-        const lang = btn.getAttribute('data-lang');
-        // Cambiamos el texto del saludo usando el diccionario
-        saludo.textContent = traducciones[lang];
-        prueba.textContent = traducciones[lang];
+        const lang = btn.getAttribute('data-lang'); // idioma del botón
+        saludo.textContent = traducciones[lang].titulo; // cambia el título
+        prueba.textContent = traducciones[lang].texto;  // cambia el párrafo
       });
     });
   </script>
 </body>
-</html>
+e
