@@ -16,25 +16,30 @@
 
   <!-- Párrafo -->
   <p id="prueba">Hola buenos dias, mi nombre es xxxx xxxx xxx , Tengo xx de edad. </p>
+  <p id="renglon">hoy es martes del 12 de diciembre del año 2025 </p>
 
   <script>
     // Referencias a los elementos
     const saludo = document.getElementById('saludo');
     const prueba = document.getElementById('prueba');
+     const renglon = document.getElementById('renglon');
 
     // Diccionario con dos textos por idioma: título y párrafo
     const traducciones = {
       es: {
         titulo: '¡Hola Mundo!',
-        texto: 'Hola buenos dias, mi nombre es xxxx xxxx xxx , Tengo xx de edad.'
+        texto: 'Hola buenos dias, mi nombre es xxxx xxxx xxx , Tengo xx de edad.',
+         texto2: 'hoy es martes del 12 de diciembre del año 2025.'
       },
       en: {
         titulo: 'Hello World!',
-        texto: 'hello good mornign, mi name is xxxxx, im xxx years old'
+        texto: 'hello good mornign, mi name is xxxxx, im xxx years old',
+         texto2: 'today is thuesday, December 12th, 2025 .'
       },
       ja: {
         titulo: 'こんにちは世界', // Japonés: "Kon’nichiwa sekai"
-        texto: 'おはよう ございます    私は ____です   私は  _______ 歳です 。  ' 
+        texto: 'おはよう ございます    私は ____です   私は  _______ 歳です 。',
+          texto2: '今日は２０２５年１２月２日火曜日です.' 
       }
     };
 
@@ -47,6 +52,7 @@
         const lang = btn.getAttribute('data-lang'); // idioma del botón
         saludo.textContent = traducciones[lang].titulo; // cambia el título
         prueba.textContent = traducciones[lang].texto;  // cambia el párrafo
+         renglon.textContent = traducciones[lang].texto2;  // cambia el párrafo
       });
     });
   </script>
