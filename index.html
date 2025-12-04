@@ -1,199 +1,79 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pac‑Man (single index) - Jaime</title>
-  <style>
-    :root{--bg:#000;--wall:#19334d;--dot:#ffd27f;--pac:#ffd700;--ghost1:#ff4d4d;--ghost2:#4da6ff}
-    html,body{height:100%;margin:0;background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:Inter,Arial}
-    #game{background:#000;padding:12px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.6);}
-    canvas{display:block;background:#000;border:4px solid #071826}
-    .hud{color:#ddd;margin-top:8px;display:flex;gap:12px;align-items:center;justify-content:center}
-    .hint{color:#9fb8c9;font-size:13px}
-    button{background:#1e8; border:none;padding:6px 10px;border-radius:6px;cursor:pointer}
-  </style>
+  <meta charset="UTF-8" />
+  <title>Multilenguaje</title>
+
+
+<style>
+  #saludo, #prueba {
+    text-align: center;
+  }
+</style>
+
+
+
+
+
 </head>
 <body>
-  <div id="game">
-    <canvas id="c" width="560" height="360"></canvas>
-    <div class="hud">
-      <div>Score: <span id="score">0</span></div>
-      <div class="hint">Usa las flechas para mover. Refresca para reiniciar.</div>
-      <button id="restart">Reiniciar</button>
-    </div>
-  </div>
+  <!-- Texto principal -->
+  <h1 id="saludo">¡Hola Mundo!</h1>
 
-<script>
-// Pac‑Man simple — single-file
-const canvas = document.getElementById('c');
-const ctx = canvas.getContext('2d');
-const scoreEl = document.getElementById('score');
-const restartBtn = document.getElementById('restart');
+  <!-- Botones para cambiar idioma -->
+  <button data-lang="es">Español</button>
+  <button data-lang="en">Inglés</button>
+  <button data-lang="ja">Japonés</button>
 
-const TILE = 20; // pixel
-const COLS = Math.floor(canvas.width / TILE); // 28
-const ROWS = Math.floor(canvas.height / TILE); // 18
+  <!-- Párrafo -->
+  <p id="prueba">Hola buenos dias, mi nombre es xxxx xxxx xxx , Tengo xx de edad. </p>
+  <p id="renglon">hoy es martes del 12 de diciembre del año 2025, el dia de hoy estoy programando.
+    Estoy usando html y css con visual studio code. Soy ingeniero en electronica,  se programar en
+    Visual studio C#, Android studio(java), neatbeans, html, css, arduino, esp32, esp8266, tambien
+    se usar base de datos como ACCES Y SQL Server, Se usar software de diseño CAD como por ejemplo
+    Solidworks, Meshmixer , uso programas para generar  gode para impresoras 3D, Por ejeplo como|
+    Orca slicer, Cura Ultimaker, he manejo plc marca keyence  para la comunicacion tcp ip mediante 
+    visual studio 
+  </p>
 
-// Simple map: 0-empty,1-wall,2-dot
-// We'll procedurally create a border + some blocks to keep it small
-let map = [];
-function createMap(){
-  map = new Array(ROWS).fill(0).map(()=>new Array(COLS).fill(2));
-  for(let r=0;r<ROWS;r++){
-    for(let c=0;c<COLS;c++){
-      if(r===0||r===ROWS-1||c===0||c===COLS-1) map[r][c]=1; // border
-      // inner simple obstacles
-      if((r%4===0 && c%6>1 && c%6<5) || (c%7===0 && r%5>1)) map[r][c]=1;
-    }
-  }
-  // make a path around
-  for(let r=1;r<ROWS-1;r++){map[r][Math.floor(COLS/2)]=0}
-  // clear some dots near start
-  map[ROWS-2][1]=0;
-  map[ROWS-2][2]=0;
-}
+  <script>
+    // Referencias a los elementos
+    const saludo = document.getElementById('saludo');
+    const prueba = document.getElementById('prueba');
+     const renglon = document.getElementById('renglon');
 
-let pac = {x:2,y:ROWS-2,dx:0,dy:0,r:0.35};
-let score=0;
-let dotsCount=0;
-
-function countDots(){
-  dotsCount=0;for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)if(map[r][c]===2)dotsCount++;
-}
-
-// simple ghosts
-let ghosts = [];
-function spawnGhosts(){
-  ghosts = [
-    {x:Math.floor(COLS/2)-2,y:2,dx:0,dy:0,color:'#ff4d4d'},
-    {x:Math.floor(COLS/2)+2,y:2,dx:0,dy:0,color:'#4da6ff'}
-  ];
-}
-
-function reset(){
-  createMap();
-  pac = {x:2,y:ROWS-2,dx:0,dy:0,r:0.35};
-  score=0;scoreEl.textContent=score;
-  spawnGhosts();
-  countDots();
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  // draw grid background
-  for(let r=0;r<ROWS;r++){
-    for(let c=0;c<COLS;c++){
-      const v = map[r][c];
-      const px = c*TILE, py = r*TILE;
-      if(v===1){ // wall
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--wall') || '#19334d';
-        ctx.fillRect(px,py,TILE,TILE);
-      } else if(v===2){ // dot
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--dot') || '#ffd27f';
-        ctx.beginPath(); ctx.arc(px+TILE/2,py+TILE/2,3,0,Math.PI*2); ctx.fill();
+    // Diccionario con dos textos por idioma: título y párrafo
+    const traducciones = {
+      es: {
+        titulo: '¡Hola Mundo!',
+        texto: 'Hola buenos dias, mi nombre es xxxx xxxx xxx , Tengo xx de edad.',
+         texto2: 'hoy es martes del 12 de diciembre del año 2025.'
+      },
+      en: {
+        titulo: 'Hello World!',
+        texto: 'hello good mornign, mi name is xxxxx, im xxx years old',
+         texto2: 'hoy es martes del 12 de diciembre del año 2025, el dia de hoy estoy programando. Estoy usando html y css con visual studio code. Soy ingeniero en electronica,  se programar en Visual studio C#, Android studio(java), neatbeans, html, css, arduino, esp32, esp8266, tambien se usar base de datos como ACCES Y SQL Server, Se usar software de diseño CAD como por ejemplo Solidworks, Meshmixer , uso programas para generar  gode para impresoras 3D, Por ejeplo como| Orca slicer, Cura Ultimaker, he manejo plc marca keyence  para la comunicacion tcp ip mediante  visual studio  .'
+      },
+      ja: {
+        titulo: 'こんにちは世界', // Japonés: "Kon’nichiwa sekai"
+        texto: 'おはよう ございます    私は ____です   私は  _______ 歳です 。',
+          texto2: '今日は２０２５年１２月２日火曜日です.' 
       }
-    }
-  }
-  // draw pacman
-  const px = pac.x*TILE + TILE/2;
-  const py = pac.y*TILE + TILE/2;
-  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--pac') || '#ffd700';
-  // mouth animation
-  const ang = pac.r * Math.PI;
-  ctx.beginPath();
-  ctx.moveTo(px,py);
-  ctx.arc(px,py,TILE/2,ang,Math.PI*2-ang);
-  ctx.closePath(); ctx.fill();
+    };
 
-  // draw ghosts
-  for(const g of ghosts){
-    const gx = g.x*TILE + TILE/2;
-    const gy = g.y*TILE + TILE/2;
-    drawGhost(gx,gy,TILE*0.45,g.color);
-  }
-}
+    // Seleccionamos todos los botones con data-lang
+    const botones = document.querySelectorAll('button[data-lang]');
 
-function drawGhost(x,y,size,color){
-  ctx.fillStyle = color;
-  ctx.beginPath();
-  ctx.arc(x,y-size*0.12,size*0.6,Math.PI,2*Math.PI);
-  ctx.rect(x-size*0.6,y-size*0.12,size*1.2,size*0.9);
-  ctx.fill();
-  // eyes
-  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x-size*0.18,y-size*0.05,size*0.13,0,Math.PI*2);ctx.fill();
-  ctx.beginPath();ctx.arc(x+size*0.18,y-size*0.05,size*0.13,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#000';ctx.beginPath();ctx.arc(x-size*0.18,y-size*0.05,size*0.06,0,Math.PI*2);ctx.fill();
-  ctx.beginPath();ctx.arc(x+size*0.18,y-size*0.05,size*0.06,0,Math.PI*2);ctx.fill();
-}
-
-function canMove(x,y){
-  if(x<0||y<0||x>=COLS||y>=ROWS) return false;
-  return map[y][x]!==1;
-}
-
-let lastTime=0;
-function update(dt){
-  // pac movement: try to move in dx,dy when possible
-  if(pac.dx!==0 || pac.dy!==0){
-    const nx = pac.x + pac.dx;
-    const ny = pac.y + pac.dy;
-    if(canMove(nx,ny)) pac.x = nx, pac.y = ny;
-  }
-  // eat dot
-  if(map[pac.y][pac.x]===2){ map[pac.y][pac.x]=0; score+=10; scoreEl.textContent=score; countDots(); }
-
-  // simple ghost AI: move closer or random
-  for(const g of ghosts){
-    if(Math.random()<0.02) { // random turn
-      const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
-      const d = dirs[Math.floor(Math.random()*dirs.length)];
-      if(canMove(g.x+d[0], g.y+d[1])){ g.x += d[0]; g.y += d[1]; }
-    } else {
-      // try to approach pacman a bit
-      const dx = Math.sign(pac.x - g.x);
-      const dy = Math.sign(pac.y - g.y);
-      if(Math.random()<0.6 && canMove(g.x+dx,g.y)) g.x+=dx; else if(canMove(g.x,g.y+dy)) g.y+=dy; else {
-        const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
-        const d = dirs[Math.floor(Math.random()*dirs.length)];
-        if(canMove(g.x+d[0], g.y+d[1])){ g.x += d[0]; g.y += d[1]; }
-      }
-    }
-  }
-
-  // check collisions with ghosts
-  for(const g of ghosts){ if(g.x===pac.x && g.y===pac.y){ gameOver(); return; } }
-
-  // win condition
-  if(dotsCount===0){ win(); }
-}
-
-let running = true;
-function gameOver(){ running=false; setTimeout(()=>{ alert('Perdiste! Score: '+score); },50); }
-function win(){ running=false; setTimeout(()=>{ alert('Ganaste! Score: '+score); },50); }
-
-function loop(ts){
-  const dt = ts-lastTime; lastTime=ts;
-  if(running){ update(dt); draw(); pac.r = 0.25 + 0.15*Math.abs(Math.sin(ts/120)); }
-  requestAnimationFrame(loop);
-}
-
-// controls
-window.addEventListener('keydown',e=>{
-  if(!running) return;
-  if(e.key==='ArrowLeft'){ pac.dx=-1; pac.dy=0; }
-  if(e.key==='ArrowRight'){ pac.dx=1; pac.dy=0; }
-  if(e.key==='ArrowUp'){ pac.dx=0; pac.dy=-1; }
-  if(e.key==='ArrowDown'){ pac.dx=0; pac.dy=1; }
-});
-
-restartBtn.addEventListener('click',()=>{ running=true; reset(); });
-
-// init
-reset(); requestAnimationFrame(loop);
-
-// Small note: This is a simplified Pac‑Man style demo meant to be dropped in a single index.html.
-// To publish on GitHub Pages: create a repository, add this file as index.html to the repo root and enable Pages (branch main / gh-pages).
-</script>
+    // Asignamos evento a cada botón
+    botones.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang'); // idioma del botón
+        saludo.textContent = traducciones[lang].titulo; // cambia el título
+        prueba.textContent = traducciones[lang].texto;  // cambia el párrafo
+         renglon.textContent = traducciones[lang].texto2;  // cambia el párrafo
+      });
+    });
+  </script>
 </body>
-</html>
+e
