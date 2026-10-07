@@ -1,2355 +1,391 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Ingeniería | Automatización, Software e IoT</title>
-
-    <meta name="description"
-          content="Portafolio profesional de ingeniería electrónica, automatización industrial, desarrollo de software, IoT e impresión 3D.">
-
-    <style>
-        /* =====================================================
-           CONFIGURACIÓN GENERAL
-        ===================================================== */
-
-        :root {
-            --background: #0b1118;
-            --background-secondary: #111923;
-            --card: #151f2b;
-            --card-hover: #1b2837;
-
-            --primary: #4aa8ff;
-            --primary-dark: #2483d8;
-
-            --text: #f3f6fa;
-            --text-secondary: #9da9b8;
-
-            --border: #243344;
-
-            --success: #34c98f;
-
-            --max-width: 1200px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family:
-                "Segoe UI",
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            background: var(--background);
-            color: var(--text);
-
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: auto;
-        }
-
-
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            background: rgba(11, 17, 24, 0.95);
-            backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid var(--border);
-        }
-
-        .navbar {
-            min-height: 70px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            font-size: 14px;
-            color: var(--text-secondary);
-
-            transition: 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        .language-selector {
-            display: flex;
-            gap: 6px;
-        }
-
-        .language-selector button {
-            background: transparent;
-            color: var(--text-secondary);
-
-            border: 1px solid var(--border);
-
-            padding: 7px 10px;
-
-            border-radius: 6px;
-
-            cursor: pointer;
-
-            font-weight: 600;
-        }
-
-        .language-selector button:hover,
-        .language-selector button.active {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-            min-height: 88vh;
-
-            display: flex;
-            align-items: center;
-
-            padding: 80px 0;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-
-            gap: 70px;
-
-            align-items: center;
-        }
-
-        .hero-label {
-            display: inline-block;
-
-            color: var(--primary);
-
-            font-size: 14px;
-            font-weight: 600;
-
-            margin-bottom: 18px;
-
-            letter-spacing: 1px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 70px);
-
-            line-height: 1.05;
-
-            margin-bottom: 25px;
-
-            letter-spacing: -2px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero-description {
-            max-width: 720px;
-
-            color: var(--text-secondary);
-
-            font-size: 19px;
-
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-
-            padding: 13px 23px;
-
-            border-radius: 7px;
-
-            font-size: 15px;
-            font-weight: 600;
-
-            transition: 0.2s;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #05111d;
-        }
-
-        .btn-primary:hover {
-            background: #79beff;
-        }
-
-        .btn-outline {
-            border: 1px solid var(--border);
-            color: var(--text);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-
-        /* =====================================================
-           HERO TERMINAL / STATUS
-        ===================================================== */
-
-        .engineering-panel {
-            background: var(--card);
-
-            border: 1px solid var(--border);
-            border-radius: 12px;
-
-            padding: 30px;
-
-            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            margin-bottom: 25px;
-        }
-
-        .panel-title {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            font-size: 12px;
-            color: var(--success);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-
-            background: var(--success);
-            border-radius: 50%;
-        }
-
-        .system-line {
-            padding: 12px 0;
-
-            border-bottom: 1px solid var(--border);
-
-            display: flex;
-            justify-content: space-between;
-
-            gap: 15px;
-
-            font-size: 14px;
-        }
-
-        .system-line:last-child {
-            border: 0;
-        }
-
-        .system-name {
-            color: var(--text-secondary);
-        }
-
-        .system-value {
-            color: var(--text);
-            text-align: right;
-        }
-
-
-        /* =====================================================
-           SECCIONES
-        ===================================================== */
-
-        section {
-            padding: 90px 0;
-        }
-
-        .section-title {
-            max-width: 700px;
-
-            margin-bottom: 50px;
-        }
-
-        .section-label {
-            color: var(--primary);
-
-            text-transform: uppercase;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 10px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            color: var(--text-secondary);
-            font-size: 17px;
-        }
-
-
-        /* =====================================================
-           ABOUT
-        ===================================================== */
-
-        .about {
-            background: var(--background-secondary);
-        }
-
-        .about-grid {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 60px;
-        }
-
-        .about-text {
-            color: var(--text-secondary);
-
-            font-size: 17px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-        }
-
-        .about-highlight {
-            padding-left: 20px;
-
-            border-left: 3px solid var(--primary);
-
-            color: var(--text);
-
-            font-size: 20px;
-        }
-
-
-        /* =====================================================
-           HABILIDADES
-        ===================================================== */
-
-        .skills-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: var(--card);
-
-            border: 1px solid var(--border);
-
-            border-radius: 10px;
-
-            padding: 28px;
-
-            transition: 0.2s;
-        }
-
-        .skill-card:hover {
-            border-color: #365372;
-
-            transform: translateY(-4px);
-
-            background: var(--card-hover);
-        }
-
-        .skill-icon {
-            font-size: 27px;
-
-            margin-bottom: 16px;
-        }
-
-        .skill-card h3 {
-            margin-bottom: 15px;
-
-            font-size: 19px;
-        }
-
-        .technology-list {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 8px;
-        }
-
-        .technology {
-            background: #0e1721;
-
-            border: 1px solid var(--border);
-
-            padding: 6px 9px;
-
-            border-radius: 5px;
-
-            color: var(--text-secondary);
-
-            font-size: 12px;
-        }
-
-
-        /* =====================================================
-           PROYECTOS
-        ===================================================== */
-
-        .projects {
-            background: var(--background-secondary);
-        }
-
-        .project-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(320px, 1fr));
-
-            gap: 25px;
-        }
-
-        .project-card {
-            background: var(--card);
-
-            border: 1px solid var(--border);
-
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-
-        .project-header {
-            min-height: 170px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #152536,
-                    #0e1822
-                );
-
-            font-size: 52px;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-category {
-            color: var(--primary);
-
-            font-size: 12px;
-            font-weight: 700;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 9px;
-        }
-
-        .project-content h3 {
-            margin-bottom: 12px;
-        }
-
-        .project-content p {
-            color: var(--text-secondary);
-
-            font-size: 14px;
-
-            margin-bottom: 20px;
-        }
-
-
-        /* =====================================================
-           SERVICIOS
-        ===================================================== */
-
-        .services-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(250px, 1fr));
-
-            gap: 20px;
-        }
-
-        .service {
-            padding: 26px;
-
-            border: 1px solid var(--border);
-
-            border-radius: 10px;
-        }
-
-        .service-number {
-            font-size: 13px;
-
-            color: var(--primary);
-
-            margin-bottom: 15px;
-
-            font-weight: bold;
-        }
-
-        .service h3 {
-            margin-bottom: 10px;
-        }
-
-        .service p {
-            color: var(--text-secondary);
-
-            font-size: 14px;
-        }
-
-
-        /* =====================================================
-           CONTACTO
-        ===================================================== */
-
-        .contact {
-            background: var(--background-secondary);
-        }
-
-        .contact-box {
-            max-width: 800px;
-
-            padding: 50px;
-
-            background: var(--card);
-
-            border: 1px solid var(--border);
-
-            border-radius: 12px;
-        }
-
-        .contact-box h2 {
-            margin-bottom: 15px;
-
-            font-size: 35px;
-        }
-
-        .contact-box p {
-            color: var(--text-secondary);
-
-            margin-bottom: 30px;
-
-            font-size: 17px;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-            padding: 30px 0;
-
-            border-top: 1px solid var(--border);
-
-            color: var(--text-secondary);
-
-            font-size: 13px;
-        }
-
-        .footer-content {
-            display: flex;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            flex-wrap: wrap;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media (max-width: 850px) {
-
-            nav {
-                display: none;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                min-height: auto;
-            }
-
-            .engineering-panel {
-                max-width: 600px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-        @media (max-width: 550px) {
-
-            .navbar {
-                flex-wrap: wrap;
-
-                padding: 15px 0;
-            }
-
-            .hero {
-                padding-top: 55px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            section {
-                padding: 65px 0;
-            }
-
-            .section-title h2 {
-                font-size: 30px;
-            }
-
-            .contact-box {
-                padding: 30px;
-            }
-
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio profesional de ingeniería electrónica, automatización industrial, software, IoT e impresión 3D." />
+  <meta name="theme-color" content="#f4f4ef" />
+  <title>Jaime | Ingeniería, Automatización y Software</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
-
 <body>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Inicio">
+      <span class="brand-mark">J</span>
+      <span class="brand-text">Jaime<span>.</span></span>
+    </a>
 
-<header>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#about" data-i18n="navAbout">Sobre mí</a>
+      <a href="#projects" data-i18n="navProjects">Proyectos</a>
+      <a href="#skills" data-i18n="navSkills">Habilidades</a>
+      <a href="#experience" data-i18n="navExperience">Experiencia</a>
+      <a href="#contact" data-i18n="navContact">Contacto</a>
+    </nav>
 
-    <div class="container navbar">
+    <div class="header-actions">
+      <div class="lang-switch" aria-label="Cambiar idioma">
+        <button type="button" data-lang="es" class="active">ES</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ja">JP</button>
+      </div>
 
-        <div class="logo">
-            Ingeniería<span>.</span>
-        </div>
-
-        <nav>
-
-            <a href="#inicio" data-i18n="navHome">
-                Inicio
-            </a>
-
-            <a href="#sobre-mi" data-i18n="navAbout">
-                Sobre mí
-            </a>
-
-            <a href="#habilidades" data-i18n="navSkills">
-                Habilidades
-            </a>
-
-            <a href="#proyectos" data-i18n="navProjects">
-                Proyectos
-            </a>
-
-            <a href="#servicios" data-i18n="navServices">
-                Servicios
-            </a>
-
-            <a href="#contacto" data-i18n="navContact">
-                Contacto
-            </a>
-
-        </nav>
-
-
-        <div class="language-selector">
-
-            <button data-lang="es" class="active">
-                ES
-            </button>
-
-            <button data-lang="en">
-                EN
-            </button>
-
-            <button data-lang="ja">
-                JP
-            </button>
-
-        </div>
-
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
     </div>
 
-</header>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" data-i18n="navAbout">Sobre mí</a>
+      <a href="#projects" data-i18n="navProjects">Proyectos</a>
+      <a href="#skills" data-i18n="navSkills">Habilidades</a>
+      <a href="#experience" data-i18n="navExperience">Experiencia</a>
+      <a href="#contact" data-i18n="navContact">Contacto</a>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" data-i18n="heroEyebrow">INGENIERO ELECTRÓNICO · AUTOMATIZACIÓN · SOFTWARE</p>
+        <h1 data-i18n-html="heroTitle">
+          Conecto el mundo <em>físico</em> de una máquina con el mundo <em>digital</em>.
+        </h1>
+        <p class="hero-text" data-i18n="heroText">
+          Desarrollo soluciones que integran PLC, sensores, cámaras, lectores, impresoras industriales,
+          microcontroladores, software de escritorio y bases de datos.
+        </p>
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+        <div class="hero-actions">
+          <a class="button button-dark" href="#projects" data-i18n="viewProjects">Ver proyectos</a>
+          <a class="button button-light" href="#contact" data-i18n="contactMe">Contactarme</a>
+        </div>
 
-<section class="hero" id="inicio">
+        <div class="hero-meta">
+          <div>
+            <span class="meta-label" data-i18n="focusLabel">ENFOQUE</span>
+            <strong data-i18n="focusValue">Manufactura digital</strong>
+          </div>
+          <div>
+            <span class="meta-label" data-i18n="stackLabel">STACK PRINCIPAL</span>
+            <strong>C# · SQL · PLC · IoT</strong>
+          </div>
+        </div>
+      </div>
 
-    <div class="container hero-grid">
+      <div class="hero-visual reveal delay-1" aria-label="Diagrama de integración de sistemas">
+        <div class="portrait-card">
+          <div class="portrait-top">
+            <span>01</span>
+            <span>ENGINEERING PROFILE</span>
+          </div>
 
+          <div class="integration-map">
+            <div class="node node-a">PLC</div>
+            <div class="node node-b">C# / WPF</div>
+            <div class="node node-c">SQL</div>
+            <div class="node node-d">IoT</div>
+            <div class="node node-e">Vision</div>
+            <div class="hub">
+              <span>INTEGRATION</span>
+              <strong>ENGINEER</strong>
+            </div>
+            <svg class="map-lines" viewBox="0 0 500 430" aria-hidden="true">
+              <line x1="250" y1="210" x2="94" y2="74"/>
+              <line x1="250" y1="210" x2="401" y2="88"/>
+              <line x1="250" y1="210" x2="416" y2="326"/>
+              <line x1="250" y1="210" x2="103" y2="344"/>
+              <line x1="250" y1="210" x2="250" y2="38"/>
+            </svg>
+          </div>
+
+          <div class="portrait-bottom">
+            <span data-i18n="heroVisualCaption">Máquina ↔ Software ↔ Datos</span>
+            <span class="status-dot"><i></i> AVAILABLE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section-shell section-pad" id="about">
+      <div class="section-number reveal">02</div>
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="aboutEyebrow">SOBRE MÍ</p>
+        <h2 data-i18n="aboutTitle">Ingeniería aplicada a problemas reales.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-statement reveal">
+          <p data-i18n="aboutLead">
+            Mi especialidad es integrar hardware, software y datos para resolver necesidades reales de producción.
+          </p>
+        </div>
+
+        <div class="about-copy reveal delay-1">
+          <p data-i18n="aboutP1">
+            Soy ingeniero electrónico con experiencia en automatización industrial, desarrollo de software para
+            manufactura, trazabilidad, bases de datos, microcontroladores e integración de equipos industriales.
+          </p>
+          <p data-i18n="aboutP2">
+            He trabajado con sistemas que conectan computadoras con PLC, sensores, cámaras de visión,
+            lectores de códigos, impresoras industriales y SQL Server para registrar, validar y monitorear procesos.
+          </p>
+          <p data-i18n="aboutP3">
+            También desarrollo prototipos con Arduino, ESP32 y ESP8266, y utilizo impresión 3D para fabricar
+            componentes funcionales para electrónica y automatización.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects section-shell section-pad" id="projects">
+      <div class="section-number reveal">03</div>
+      <div class="section-heading split-heading reveal">
         <div>
+          <p class="eyebrow" data-i18n="projectsEyebrow">PROYECTOS SELECCIONADOS</p>
+          <h2 data-i18n="projectsTitle">Sistemas que conectan la planta con el software.</h2>
+        </div>
+        <p data-i18n="projectsIntro">
+          Una selección de proyectos de automatización, trazabilidad, visión, robótica e IoT.
+        </p>
+      </div>
 
-            <span
-                class="hero-label"
-                data-i18n="heroLabel">
-                INGENIERÍA · AUTOMATIZACIÓN · SOFTWARE
-            </span>
-
-            <h1 data-i18n="heroTitle">
-                Conectando máquinas,
-                <span>software</span>
-                y datos.
-            </h1>
-
-            <p
-                class="hero-description"
-                data-i18n="heroDescription">
-
-                Ingeniero electrónico especializado en
-                automatización industrial, desarrollo de software,
-                IoT, trazabilidad e integración de equipos
-                industriales.
-
+      <div class="project-list">
+        <article class="project-row reveal">
+          <div class="project-index">01</div>
+          <div class="project-art art-traceability">
+            <div class="screen-window">
+              <div class="window-bar"><i></i><i></i><i></i></div>
+              <div class="window-layout">
+                <div class="window-sidebar"></div>
+                <div class="window-main">
+                  <span class="mini-line w80"></span>
+                  <span class="mini-line w55"></span>
+                  <div class="mini-cards">
+                    <i></i><i></i><i></i>
+                  </div>
+                  <div class="mini-table"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-copy">
+            <span class="project-type">INDUSTRIAL SOFTWARE</span>
+            <h3 data-i18n="project1Title">Sistema de trazabilidad industrial</h3>
+            <p data-i18n="project1Text">
+              Registro y validación de piezas a través de distintas estaciones de manufactura, integrando
+              aplicaciones de escritorio, SQL Server, lectores de código y señales de proceso.
             </p>
+            <div class="tags"><span>C#</span><span>WPF</span><span>SQL Server</span><span>Traceability</span></div>
+          </div>
+        </article>
 
-
-            <div class="hero-buttons">
-
-                <a
-                    href="#proyectos"
-                    class="btn btn-primary"
-                    data-i18n="seeProjects">
-
-                    Ver proyectos
-
-                </a>
-
-                <a
-                    href="#contacto"
-                    class="btn btn-outline"
-                    data-i18n="contactMe">
-
-                    Contactarme
-
-                </a>
-
+        <article class="project-row reverse reveal">
+          <div class="project-index">02</div>
+          <div class="project-art art-plc">
+            <div class="plc-rack">
+              <div class="plc-leds"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="plc-label">PLC / I/O</div>
+              <div class="plc-grid"></div>
             </div>
-
-        </div>
-
-
-        <!-- PANEL -->
-
-        <div class="engineering-panel">
-
-            <div class="panel-header">
-
-                <span class="panel-title">
-                    ENGINEERING SYSTEM
-                </span>
-
-                <div class="status">
-
-                    <span class="status-dot"></span>
-
-                    ONLINE
-
-                </div>
-
+            <div class="connection-card">
+              <small>TCP/IP</small>
+              <strong>PC ↔ PLC</strong>
+              <span>INPUT · OUTPUT · CONTROL</span>
             </div>
-
-
-            <div class="system-line">
-
-                <span class="system-name">
-                    Software
-                </span>
-
-                <span class="system-value">
-                    C# · .NET · WPF
-                </span>
-
-            </div>
-
-
-            <div class="system-line">
-
-                <span class="system-name">
-                    Automation
-                </span>
-
-                <span class="system-value">
-                    PLC · Sensors
-                </span>
-
-            </div>
-
-
-            <div class="system-line">
-
-                <span class="system-name">
-                    Industrial Data
-                </span>
-
-                <span class="system-value">
-                    SQL Server
-                </span>
-
-            </div>
-
-
-            <div class="system-line">
-
-                <span class="system-name">
-                    IoT
-                </span>
-
-                <span class="system-value">
-                    ESP32 · ESP8266
-                </span>
-
-            </div>
-
-
-            <div class="system-line">
-
-                <span class="system-name">
-                    Manufacturing
-                </span>
-
-                <span class="system-value">
-                    Traceability · OEE
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SOBRE MI
-===================================================== -->
-
-<section class="about" id="sobre-mi">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <div
-                class="section-label"
-                data-i18n="aboutLabel">
-                PERFIL PROFESIONAL
-            </div>
-
-            <h2 data-i18n="aboutTitle">
-                Ingeniería aplicada a problemas reales
-            </h2>
-
-        </div>
-
-
-        <div class="about-grid">
-
-
-            <div class="about-text">
-
-                <p data-i18n="aboutText1">
-
-                    Soy ingeniero electrónico con experiencia en
-                    automatización industrial, desarrollo de software
-                    para manufactura, integración de maquinaria,
-                    sistemas de trazabilidad, bases de datos e IoT.
-
-                </p>
-
-
-                <p data-i18n="aboutText2">
-
-                    He trabajado desarrollando sistemas capaces de
-                    comunicar computadoras con PLC, sensores,
-                    lectores de códigos, cámaras de visión,
-                    impresoras industriales, bases de datos y
-                    microcontroladores.
-
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <div
-                    class="about-highlight"
-                    data-i18n="aboutHighlight">
-
-                    Mi especialidad es crear el puente entre el
-                    mundo físico de una máquina y el mundo digital
-                    del software y los datos.
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     HABILIDADES
-===================================================== -->
-
-<section id="habilidades">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <div
-                class="section-label"
-                data-i18n="skillsLabel">
-
-                CONOCIMIENTOS
-
-            </div>
-
-            <h2 data-i18n="skillsTitle">
-                Tecnologías y áreas de experiencia
-            </h2>
-
-            <p data-i18n="skillsDescription">
-
-                Experiencia combinando desarrollo de software,
-                electrónica y automatización para crear soluciones
-                industriales completas.
-
+          </div>
+          <div class="project-copy">
+            <span class="project-type">AUTOMATION</span>
+            <h3 data-i18n="project2Title">Integración PC ↔ PLC y control de proceso</h3>
+            <p data-i18n="project2Text">
+              Comunicación entre software, PLC, sensores y actuadores para controlar conveyors, validar estados
+              de producción y ejecutar secuencias de proceso.
             </p>
+            <div class="tags"><span>Omron</span><span>TCP/IP</span><span>C#</span><span>Sensors</span></div>
+          </div>
+        </article>
 
-        </div>
-
-
-        <div class="skills-grid">
-
-
-            <!-- AUTOMATIZACION -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ⚙
-                </div>
-
-                <h3 data-i18n="automation">
-                    Automatización Industrial
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">PLC</span>
-                    <span class="technology">Omron</span>
-                    <span class="technology">Keyence</span>
-                    <span class="technology">Sensors</span>
-                    <span class="technology">Conveyors</span>
-                    <span class="technology">OEE</span>
-                    <span class="technology">Traceability</span>
-
-                </div>
-
+        <article class="project-row reveal">
+          <div class="project-index">03</div>
+          <div class="project-art art-agv">
+            <div class="agv-body">
+              <div class="agv-top"></div>
+              <div class="agv-sensor"></div>
+              <div class="wheel left"></div>
+              <div class="wheel right"></div>
+              <span>AGV</span>
             </div>
-
-
-            <!-- PROGRAMACION -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    &lt;/&gt;
-                </div>
-
-                <h3 data-i18n="programming">
-                    Programación
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">C#</span>
-                    <span class="technology">.NET</span>
-                    <span class="technology">WPF</span>
-                    <span class="technology">Python</span>
-                    <span class="technology">JavaScript</span>
-                    <span class="technology">HTML</span>
-                    <span class="technology">CSS</span>
-                    <span class="technology">Classic ASP</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- IOT -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ◉
-                </div>
-
-                <h3 data-i18n="iot">
-                    Microcontroladores e IoT
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">Arduino</span>
-                    <span class="technology">ESP32</span>
-                    <span class="technology">ESP8266</span>
-                    <span class="technology">WiFi</span>
-                    <span class="technology">Bluetooth</span>
-                    <span class="technology">HTTP</span>
-                    <span class="technology">APIs</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- DATABASE -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ⛁
-                </div>
-
-                <h3 data-i18n="databases">
-                    Bases de Datos
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">SQL Server</span>
-                    <span class="technology">T-SQL</span>
-                    <span class="technology">Stored Procedures</span>
-                    <span class="technology">Functions</span>
-                    <span class="technology">Production Data</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- INDUSTRIAL DEVICES -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ◫
-                </div>
-
-                <h3 data-i18n="devices">
-                    Dispositivos Industriales
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">Keyence</span>
-                    <span class="technology">Cognex</span>
-                    <span class="technology">Zebra</span>
-                    <span class="technology">Honeywell</span>
-                    <span class="technology">Barcode</span>
-                    <span class="technology">QR</span>
-                    <span class="technology">DataMatrix</span>
-                    <span class="technology">ZPL</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- ROBOTICS -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ⛭
-                </div>
-
-                <h3 data-i18n="robotics">
-                    Robótica y Movimiento
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">NEMA 17</span>
-                    <span class="technology">TB6600</span>
-                    <span class="technology">AGV</span>
-                    <span class="technology">AMR</span>
-                    <span class="technology">Motion Control</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- 3D PRINTING -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ◈
-                </div>
-
-                <h3 data-i18n="printing">
-                    Impresión 3D
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">PLA</span>
-                    <span class="technology">TPU</span>
-                    <span class="technology">Orca Slicer</span>
-                    <span class="technology">Cura</span>
-                    <span class="technology">CAD</span>
-                    <span class="technology">Prototyping</span>
-
-                </div>
-
-            </div>
-
-
-            <!-- COMMUNICATION -->
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ⇄
-                </div>
-
-                <h3 data-i18n="communication">
-                    Comunicación
-                </h3>
-
-                <div class="technology-list">
-
-                    <span class="technology">TCP/IP</span>
-                    <span class="technology">HTTP</span>
-                    <span class="technology">Serial</span>
-                    <span class="technology">PC ↔ PLC</span>
-                    <span class="technology">REST APIs</span>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PROYECTOS
-===================================================== -->
-
-<section class="projects" id="proyectos">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <div
-                class="section-label"
-                data-i18n="projectsLabel">
-
-                PROYECTOS
-
-            </div>
-
-            <h2 data-i18n="projectsTitle">
-                Soluciones desarrolladas
-            </h2>
-
-            <p data-i18n="projectsDescription">
-
-                Algunos ejemplos de sistemas y proyectos relacionados
-                con manufactura, automatización, software y
-                electrónica.
-
+            <div class="motion-lines"><i></i><i></i><i></i></div>
+          </div>
+          <div class="project-copy">
+            <span class="project-type">ROBOTICS / IoT</span>
+            <h3 data-i18n="project3Title">Prototipo AGV para movimiento de carga</h3>
+            <p data-i18n="project3Text">
+              Plataforma móvil basada en motores NEMA 17, drivers TB6600 y control por microcontrolador,
+              con comandos de movimiento y velocidad mediante comunicación de red.
             </p>
-
-        </div>
-
-
-        <div class="project-grid">
-
-
-            <!-- PROJECT 1 -->
-
-            <article class="project-card">
-
-                <div class="project-header">
-                    ⚙
-                </div>
-
-                <div class="project-content">
-
-                    <div class="project-category">
-                        INDUSTRIAL SOFTWARE
-                    </div>
-
-                    <h3 data-i18n="project1Title">
-                        Sistema de trazabilidad industrial
-                    </h3>
-
-                    <p data-i18n="project1Text">
-
-                        Aplicación para registrar y validar el flujo
-                        de piezas durante diferentes procesos de
-                        manufactura utilizando C#, SQL Server,
-                        lectores de código y equipos industriales.
-
-                    </p>
-
-                    <div class="technology-list">
-
-                        <span class="technology">C#</span>
-                        <span class="technology">WPF</span>
-                        <span class="technology">SQL Server</span>
-                        <span class="technology">PLC</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 2 -->
-
-            <article class="project-card">
-
-                <div class="project-header">
-                    ◉
-                </div>
-
-                <div class="project-content">
-
-                    <div class="project-category">
-                        AUTOMATION
-                    </div>
-
-                    <h3 data-i18n="project2Title">
-                        Integración PC ↔ PLC
-                    </h3>
-
-                    <p data-i18n="project2Text">
-
-                        Comunicación entre aplicaciones de computadora,
-                        PLC y sensores para controlar procesos,
-                        conveyors y validar estados de producción.
-
-                    </p>
-
-                    <div class="technology-list">
-
-                        <span class="technology">PLC</span>
-                        <span class="technology">TCP/IP</span>
-                        <span class="technology">C#</span>
-                        <span class="technology">Sensors</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 3 -->
-
-            <article class="project-card">
-
-                <div class="project-header">
-                    ⛟
-                </div>
-
-                <div class="project-content">
-
-                    <div class="project-category">
-                        ROBOTICS
-                    </div>
-
-                    <h3 data-i18n="project3Title">
-                        Prototipo AGV
-                    </h3>
-
-                    <p data-i18n="project3Text">
-
-                        Desarrollo de vehículo de movimiento
-                        automatizado utilizando motores NEMA 17,
-                        drivers TB6600 y control mediante
-                        microcontroladores.
-
-                    </p>
-
-                    <div class="technology-list">
-
-                        <span class="technology">ESP</span>
-                        <span class="technology">NEMA 17</span>
-                        <span class="technology">TB6600</span>
-                        <span class="technology">HTTP</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 4 -->
-
-            <article class="project-card">
-
-                <div class="project-header">
-                    ◫
-                </div>
-
-                <div class="project-content">
-
-                    <div class="project-category">
-                        INDUSTRIAL VISION
-                    </div>
-
-                    <h3 data-i18n="project4Title">
-                        Integración de visión industrial
-                    </h3>
-
-                    <p data-i18n="project4Text">
-
-                        Integración de cámaras y lectores industriales
-                        para inspección, identificación de piezas y
-                        comunicación con sistemas de producción.
-
-                    </p>
-
-                    <div class="technology-list">
-
-                        <span class="technology">Keyence</span>
-                        <span class="technology">Cognex</span>
-                        <span class="technology">Vision</span>
-                        <span class="technology">TCP/IP</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 5 -->
-
-            <article class="project-card">
-
-                <div class="project-header">
-                    ▤
-                </div>
-
-                <div class="project-content">
-
-                    <div class="project-category">
-                        LABELING
-                    </div>
-
-                    <h3 data-i18n="project5Title">
-                        Sistemas de impresión industrial
-                    </h3>
-
-                    <p data-i18n="project5Text">
-
-                        Desarrollo de soluciones para generación e
-                        impresión automática de etiquetas con códigos
-                        QR, DataMatrix y códigos de barras.
-
-                    </p>
-
-                    <div class="technology-list">
-
-                        <span class="technology">Zebra</span>
-                        <span class="technology">ZPL</span>
-                        <span class="technology">QR</span>
-                        <span class="technology">DataMatrix</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- PROJECT 6 -->
-
-            <article class="project-card">
-
-                <div class="project-header">
-                    ◈
-                </div>
-
-                <div class="project-content">
-
-                    <div class="project-category">
-                        PROTOTYPING
-                    </div>
-
-                    <h3 data-i18n="project6Title">
-                        Prototipado e impresión 3D
-                    </h3>
-
-                    <p data-i18n="project6Text">
-
-                        Diseño y fabricación de componentes,
-                        soportes, adaptadores y piezas funcionales
-                        para proyectos electrónicos y de
-                        automatización.
-
-                    </p>
-
-                    <div class="technology-list">
-
-                        <span class="technology">CAD</span>
-                        <span class="technology">PLA</span>
-                        <span class="technology">TPU</span>
-                        <span class="technology">3D Printing</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SERVICIOS
-===================================================== -->
-
-<section id="servicios">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <div
-                class="section-label"
-                data-i18n="servicesLabel">
-
-                SERVICIOS
-
+            <div class="tags"><span>ESP32</span><span>NEMA 17</span><span>TB6600</span><span>HTTP</span></div>
+          </div>
+        </article>
+
+        <article class="project-row reverse reveal">
+          <div class="project-index">04</div>
+          <div class="project-art art-vision">
+            <div class="camera-box">
+              <div class="lens"></div>
+              <span>VISION</span>
             </div>
-
-            <h2 data-i18n="servicesTitle">
-                ¿En qué puedo ayudarte?
-            </h2>
-
-        </div>
-
-
-        <div class="services-grid">
-
-
-            <div class="service">
-
-                <div class="service-number">
-                    01
-                </div>
-
-                <h3 data-i18n="service1Title">
-                    Automatización
-                </h3>
-
-                <p data-i18n="service1Text">
-
-                    Integración de sensores, PLC,
-                    maquinaria y sistemas de control.
-
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <div class="service-number">
-                    02
-                </div>
-
-                <h3 data-i18n="service2Title">
-                    Software Industrial
-                </h3>
-
-                <p data-i18n="service2Text">
-
-                    Aplicaciones para captura de datos,
-                    trazabilidad, producción y monitoreo.
-
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <div class="service-number">
-                    03
-                </div>
-
-                <h3 data-i18n="service3Title">
-                    IoT y Electrónica
-                </h3>
-
-                <p data-i18n="service3Text">
-
-                    Desarrollo de prototipos utilizando
-                    Arduino, ESP32, ESP8266 y sensores.
-
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <div class="service-number">
-                    04
-                </div>
-
-                <h3 data-i18n="service4Title">
-                    Impresión 3D
-                </h3>
-
-                <p data-i18n="service4Text">
-
-                    Diseño, prototipado y fabricación de
-                    piezas funcionales y componentes.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACTO
-===================================================== -->
-
-<section class="contact" id="contacto">
-
-    <div class="container">
-
-        <div class="contact-box">
-
-            <div
-                class="section-label"
-                data-i18n="contactLabel">
-
-                CONTACTO
-
-            </div>
-
-            <h2 data-i18n="contactTitle">
-                ¿Tienes un proyecto?
-            </h2>
-
-            <p data-i18n="contactText">
-
-                Estoy interesado en colaborar en proyectos
-                relacionados con automatización, software,
-                electrónica, IoT, manufactura e impresión 3D.
-
+            <div class="scan-frame"><i></i><i></i><i></i><i></i><b></b></div>
+          </div>
+          <div class="project-copy">
+            <span class="project-type">INDUSTRIAL VISION</span>
+            <h3 data-i18n="project4Title">Visión industrial y lectura de códigos</h3>
+            <p data-i18n="project4Text">
+              Integración de cámaras y lectores industriales para inspección, identificación de piezas,
+              validación de códigos y comunicación con sistemas de producción.
             </p>
+            <div class="tags"><span>Keyence</span><span>Cognex</span><span>QR</span><span>DataMatrix</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
 
+    <section class="skills section-shell section-pad" id="skills">
+      <div class="section-number reveal">04</div>
+      <div class="section-heading split-heading reveal">
+        <div>
+          <p class="eyebrow" data-i18n="skillsEyebrow">HABILIDADES</p>
+          <h2 data-i18n="skillsTitle">Herramientas que utilizo para construir soluciones completas.</h2>
+        </div>
+        <p data-i18n="skillsIntro">
+          Desde la señal física de un sensor hasta la aplicación que registra los datos.
+        </p>
+      </div>
 
-            <!-- CAMBIA TU CORREO -->
-
-            <a
-                href="mailto:tu-correo@email.com"
-                class="btn btn-primary"
-                data-i18n="contactButton">
-
-                Enviar mensaje
-
-            </a>
-
-
-            <!-- PUEDES PONER TU LINKEDIN -->
-
-            <a
-                href="#"
-                class="btn btn-outline">
-
-                LinkedIn
-
-            </a>
-
-
-            <!-- PUEDES PONER TU GITHUB -->
-
-            <a
-                href="#"
-                class="btn btn-outline">
-
-                GitHub
-
-            </a>
-
+      <div class="skills-groups">
+        <div class="skill-group reveal">
+          <span class="skill-num">01</span>
+          <h3 data-i18n="skillAutomation">Automatización industrial</h3>
+          <div class="skill-pills">
+            <span>PLC</span><span>Omron</span><span>Keyence</span><span>Sensors</span><span>Relays</span>
+            <span>Conveyors</span><span>OEE</span><span>Traceability</span><span>Machine Data</span>
+          </div>
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <div class="container footer-content">
-
-        <span>
-            © 2026 · Ingeniería y Automatización
-        </span>
-
-        <span>
-            Electronic Engineering · Automation · Software · IoT
-        </span>
-
-    </div>
-
-</footer>
-
-
-<!-- =====================================================
-     TRADUCCIONES
-===================================================== -->
-
-<script>
-
-const translations = {
-
-    /* =====================================================
-       ESPAÑOL
-    ===================================================== */
-
-    es: {
-
-        navHome: "Inicio",
-        navAbout: "Sobre mí",
-        navSkills: "Habilidades",
-        navProjects: "Proyectos",
-        navServices: "Servicios",
-        navContact: "Contacto",
-
-        heroLabel:
-            "INGENIERÍA · AUTOMATIZACIÓN · SOFTWARE",
-
-        heroTitle:
-            'Conectando máquinas, <span>software</span> y datos.',
-
-        heroDescription:
-            "Ingeniero electrónico especializado en automatización industrial, desarrollo de software, IoT, trazabilidad e integración de equipos industriales.",
-
-        seeProjects:
-            "Ver proyectos",
-
-        contactMe:
-            "Contactarme",
-
-
-        aboutLabel:
-            "PERFIL PROFESIONAL",
-
-        aboutTitle:
-            "Ingeniería aplicada a problemas reales",
-
-        aboutText1:
-            "Soy ingeniero electrónico con experiencia en automatización industrial, desarrollo de software para manufactura, integración de maquinaria, sistemas de trazabilidad, bases de datos e IoT.",
-
-        aboutText2:
-            "He trabajado desarrollando sistemas capaces de comunicar computadoras con PLC, sensores, lectores de códigos, cámaras de visión, impresoras industriales, bases de datos y microcontroladores.",
-
-        aboutHighlight:
-            "Mi especialidad es crear el puente entre el mundo físico de una máquina y el mundo digital del software y los datos.",
-
-
-        skillsLabel:
-            "CONOCIMIENTOS",
-
-        skillsTitle:
-            "Tecnologías y áreas de experiencia",
-
-        skillsDescription:
-            "Experiencia combinando desarrollo de software, electrónica y automatización para crear soluciones industriales completas.",
-
-        automation:
-            "Automatización Industrial",
-
-        programming:
-            "Programación",
-
-        iot:
-            "Microcontroladores e IoT",
-
-        databases:
-            "Bases de Datos",
-
-        devices:
-            "Dispositivos Industriales",
-
-        robotics:
-            "Robótica y Movimiento",
-
-        printing:
-            "Impresión 3D",
-
-        communication:
-            "Comunicación",
-
-
-        projectsLabel:
-            "PROYECTOS",
-
-        projectsTitle:
-            "Soluciones desarrolladas",
-
-        projectsDescription:
-            "Ejemplos de sistemas y proyectos relacionados con manufactura, automatización, software y electrónica.",
-
-
-        project1Title:
-            "Sistema de trazabilidad industrial",
-
-        project1Text:
-            "Aplicación para registrar y validar el flujo de piezas durante diferentes procesos de manufactura utilizando C#, SQL Server, lectores de código y equipos industriales.",
-
-
-        project2Title:
-            "Integración PC ↔ PLC",
-
-        project2Text:
-            "Comunicación entre aplicaciones de computadora, PLC y sensores para controlar procesos, conveyors y validar estados de producción.",
-
-
-        project3Title:
-            "Prototipo AGV",
-
-        project3Text:
-            "Desarrollo de vehículo de movimiento automatizado utilizando motores NEMA 17, drivers TB6600 y control mediante microcontroladores.",
-
-
-        project4Title:
-            "Integración de visión industrial",
-
-        project4Text:
-            "Integración de cámaras y lectores industriales para inspección, identificación de piezas y comunicación con sistemas de producción.",
-
-
-        project5Title:
-            "Sistemas de impresión industrial",
-
-        project5Text:
-            "Desarrollo de soluciones para generación e impresión automática de etiquetas con códigos QR, DataMatrix y códigos de barras.",
-
-
-        project6Title:
-            "Prototipado e impresión 3D",
-
-        project6Text:
-            "Diseño y fabricación de componentes, soportes, adaptadores y piezas funcionales para proyectos electrónicos y de automatización.",
-
-
-        servicesLabel:
-            "SERVICIOS",
-
-        servicesTitle:
-            "¿En qué puedo ayudarte?",
-
-
-        service1Title:
-            "Automatización",
-
-        service1Text:
-            "Integración de sensores, PLC, maquinaria y sistemas de control.",
-
-
-        service2Title:
-            "Software Industrial",
-
-        service2Text:
-            "Aplicaciones para captura de datos, trazabilidad, producción y monitoreo.",
-
-
-        service3Title:
-            "IoT y Electrónica",
-
-        service3Text:
-            "Desarrollo de prototipos utilizando Arduino, ESP32, ESP8266 y sensores.",
-
-
-        service4Title:
-            "Impresión 3D",
-
-        service4Text:
-            "Diseño, prototipado y fabricación de piezas funcionales y componentes.",
-
-
-        contactLabel:
-            "CONTACTO",
-
-        contactTitle:
-            "¿Tienes un proyecto?",
-
-        contactText:
-            "Estoy interesado en colaborar en proyectos relacionados con automatización, software, electrónica, IoT, manufactura e impresión 3D.",
-
-        contactButton:
-            "Enviar mensaje"
-
-    },
-
-
-    /* =====================================================
-       ENGLISH
-    ===================================================== */
-
-    en: {
-
-        navHome: "Home",
-        navAbout: "About",
-        navSkills: "Skills",
-        navProjects: "Projects",
-        navServices: "Services",
-        navContact: "Contact",
-
-        heroLabel:
-            "ENGINEERING · AUTOMATION · SOFTWARE",
-
-        heroTitle:
-            'Connecting machines, <span>software</span> and data.',
-
-        heroDescription:
-            "Electronic engineer focused on industrial automation, software development, IoT, traceability and industrial equipment integration.",
-
-        seeProjects:
-            "View Projects",
-
-        contactMe:
-            "Contact Me",
-
-        aboutLabel:
-            "PROFESSIONAL PROFILE",
-
-        aboutTitle:
-            "Engineering applied to real problems",
-
-        aboutText1:
-            "I am an electronic engineer with experience in industrial automation, manufacturing software development, machine integration, traceability systems, databases and IoT.",
-
-        aboutText2:
-            "I have developed systems capable of connecting computers with PLCs, sensors, barcode readers, vision cameras, industrial printers, databases and microcontrollers.",
-
-        aboutHighlight:
-            "My specialty is creating the bridge between the physical world of machines and the digital world of software and data.",
-
-        skillsLabel:
-            "KNOWLEDGE",
-
-        skillsTitle:
-            "Technologies and areas of experience",
-
-        skillsDescription:
-            "Experience combining software development, electronics and automation to build complete industrial solutions.",
-
-        automation:
-            "Industrial Automation",
-
-        programming:
-            "Programming",
-
-        iot:
-            "Microcontrollers & IoT",
-
-        databases:
-            "Databases",
-
-        devices:
-            "Industrial Devices",
-
-        robotics:
-            "Robotics & Motion",
-
-        printing:
-            "3D Printing",
-
-        communication:
-            "Communication",
-
-        projectsLabel:
-            "PROJECTS",
-
-        projectsTitle:
-            "Developed solutions",
-
-        projectsDescription:
-            "Examples of systems and projects related to manufacturing, automation, software and electronics.",
-
-        project1Title:
-            "Industrial Traceability System",
-
-        project1Text:
-            "Application designed to register and validate products across manufacturing processes using C#, SQL Server, barcode readers and industrial equipment.",
-
-        project2Title:
-            "PC ↔ PLC Integration",
-
-        project2Text:
-            "Communication between computer applications, PLCs and sensors to control processes, conveyors and production conditions.",
-
-        project3Title:
-            "AGV Prototype",
-
-        project3Text:
-            "Automated vehicle prototype developed using NEMA 17 motors, TB6600 drivers and microcontroller-based control.",
-
-        project4Title:
-            "Industrial Vision Integration",
-
-        project4Text:
-            "Integration of industrial cameras and code readers for inspection, part identification and communication with production systems.",
-
-        project5Title:
-            "Industrial Printing Systems",
-
-        project5Text:
-            "Solutions for automatic generation and printing of labels containing QR, DataMatrix and barcode information.",
-
-        project6Title:
-            "3D Printing & Prototyping",
-
-        project6Text:
-            "Design and fabrication of components, brackets, adapters and functional parts for electronics and automation projects.",
-
-        servicesLabel:
-            "SERVICES",
-
-        servicesTitle:
-            "How can I help?",
-
-        service1Title:
-            "Automation",
-
-        service1Text:
-            "Integration of sensors, PLCs, machinery and control systems.",
-
-        service2Title:
-            "Industrial Software",
-
-        service2Text:
-            "Applications for data acquisition, traceability, production and monitoring.",
-
-        service3Title:
-            "IoT & Electronics",
-
-        service3Text:
-            "Prototype development using Arduino, ESP32, ESP8266 and sensors.",
-
-        service4Title:
-            "3D Printing",
-
-        service4Text:
-            "Design, prototyping and manufacturing of functional components.",
-
-        contactLabel:
-            "CONTACT",
-
-        contactTitle:
-            "Do you have a project?",
-
-        contactText:
-            "I am interested in collaborating on automation, software, electronics, IoT, manufacturing and 3D printing projects.",
-
-        contactButton:
-            "Send message"
-
-    },
-
-
-    /* =====================================================
-       JAPANESE
-    ===================================================== */
-
-    ja: {
-
-        navHome: "ホーム",
-        navAbout: "プロフィール",
-        navSkills: "スキル",
-        navProjects: "プロジェクト",
-        navServices: "サービス",
-        navContact: "お問い合わせ",
-
-        heroLabel:
-            "エンジニアリング · 自動化 · ソフトウェア",
-
-        heroTitle:
-            '機械、<span>ソフトウェア</span>、データをつなぐ。',
-
-        heroDescription:
-            "産業オートメーション、ソフトウェア開発、IoT、トレーサビリティ、産業機器の統合を専門とする電子工学エンジニアです。",
-
-        seeProjects:
-            "プロジェクトを見る",
-
-        contactMe:
-            "お問い合わせ",
-
-        aboutLabel:
-            "プロフィール",
-
-        aboutTitle:
-            "実際の課題を解決するエンジニアリング",
-
-        aboutText1:
-            "産業オートメーション、製造向けソフトウェア開発、機械統合、トレーサビリティシステム、データベース、IoTの経験があります。",
-
-        aboutText2:
-            "PC、PLC、センサー、バーコードリーダー、画像処理カメラ、産業用プリンター、データベース、マイクロコントローラーを連携するシステムを開発してきました。",
-
-        aboutHighlight:
-            "機械の物理的な世界と、ソフトウェアやデータのデジタル世界をつなぐことを専門としています。",
-
-        skillsLabel:
-            "技術",
-
-        skillsTitle:
-            "技術と経験分野",
-
-        skillsDescription:
-            "ソフトウェア、電子工学、オートメーションを組み合わせ、産業向けソリューションを開発しています。",
-
-        automation:
-            "産業オートメーション",
-
-        programming:
-            "プログラミング",
-
-        iot:
-            "マイクロコントローラー・IoT",
-
-        databases:
-            "データベース",
-
-        devices:
-            "産業機器",
-
-        robotics:
-            "ロボティクス",
-
-        printing:
-            "3Dプリンティング",
-
-        communication:
-            "通信",
-
-        projectsLabel:
-            "プロジェクト",
-
-        projectsTitle:
-            "開発したソリューション",
-
-        projectsDescription:
-            "製造、オートメーション、ソフトウェア、電子工学に関するプロジェクト例です。",
-
-        project1Title:
-            "産業トレーサビリティシステム",
-
-        project1Text:
-            "C#、SQL Server、コードリーダー、産業機器を使用して、生産工程で製品を登録・検証するシステムです。",
-
-        project2Title:
-            "PC ↔ PLC 統合",
-
-        project2Text:
-            "PCアプリケーション、PLC、センサーを接続し、生産設備やコンベヤーを制御します。",
-
-        project3Title:
-            "AGV プロトタイプ",
-
-        project3Text:
-            "NEMA17モーター、TB6600ドライバー、マイクロコントローラーを使用した自動搬送車のプロトタイプです。",
-
-        project4Title:
-            "産業用画像処理",
-
-        project4Text:
-            "産業用カメラやコードリーダーを生産システムと統合し、検査や製品識別を行います。",
-
-        project5Title:
-            "産業用ラベル印刷",
-
-        project5Text:
-            "QR、DataMatrix、バーコードを含むラベルを自動生成・印刷するシステムです。",
-
-        project6Title:
-            "3Dプリント・プロトタイピング",
-
-        project6Text:
-            "電子機器や自動化プロジェクト向けの部品、ブラケット、アダプターを設計・製作します。",
-
-        servicesLabel:
-            "サービス",
-
-        servicesTitle:
-            "どのようなお手伝いができますか？",
-
-        service1Title:
-            "オートメーション",
-
-        service1Text:
-            "センサー、PLC、機械、制御システムの統合。",
-
-        service2Title:
-            "産業用ソフトウェア",
-
-        service2Text:
-            "データ収集、トレーサビリティ、生産監視システムの開発。",
-
-        service3Title:
-            "IoT・電子工学",
-
-        service3Text:
-            "Arduino、ESP32、ESP8266、センサーを使用したプロトタイプ開発。",
-
-        service4Title:
-            "3Dプリンティング",
-
-        service4Text:
-            "機能部品の設計、試作、製作。",
-
-        contactLabel:
-            "お問い合わせ",
-
-        contactTitle:
-            "プロジェクトがありますか？",
-
-        contactText:
-            "オートメーション、ソフトウェア、電子工学、IoT、製造、3Dプリンティングに関するプロジェクトに対応できます。",
-
-        contactButton:
-            "メッセージを送る"
-
-    }
-
-};
-
-
-/* =====================================================
-   CAMBIO DE IDIOMA
-===================================================== */
-
-const languageButtons =
-    document.querySelectorAll("[data-lang]");
-
-
-languageButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const language =
-            button.getAttribute("data-lang");
-
-
-        /*
-            Cambia atributo lang del HTML
-        */
-
-        document.documentElement.lang = language;
-
-
-        /*
-            Buscar todos los elementos traducibles
-        */
-
-        document
-            .querySelectorAll("[data-i18n]")
-            .forEach(element => {
-
-                const key =
-                    element.getAttribute("data-i18n");
-
-
-                if (translations[language][key]) {
-
-                    /*
-                        innerHTML permite que nuestro título
-                        conserve <span>
-                    */
-
-                    element.innerHTML =
-                        translations[language][key];
-
-                }
-
-            });
-
-
-        /*
-            Cambiar botón activo
-        */
-
-        languageButtons.forEach(btn =>
-            btn.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-
-        /*
-            Guardar idioma elegido
-        */
-
-        localStorage.setItem(
-            "portfolioLanguage",
-            language
-        );
-
-    });
-
-});
-
-
-/* =====================================================
-   RECORDAR IDIOMA
-===================================================== */
-
-const savedLanguage =
-    localStorage.getItem("portfolioLanguage");
-
-
-if (savedLanguage) {
-
-    const savedButton =
-        document.querySelector(
-            `[data-lang="${savedLanguage}"]`
-        );
-
-    if (savedButton) {
-        savedButton.click();
-    }
-
-}
-
-</script>
-
+        <div class="skill-group reveal">
+          <span class="skill-num">02</span>
+          <h3 data-i18n="skillSoftware">Software y programación</h3>
+          <div class="skill-pills">
+            <span>C#</span><span>.NET</span><span>WPF</span><span>Python</span><span>JavaScript</span>
+            <span>HTML</span><span>CSS</span><span>Classic ASP</span><span>TCP/IP</span><span>Serial</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <span class="skill-num">03</span>
+          <h3 data-i18n="skillData">Datos e integración</h3>
+          <div class="skill-pills">
+            <span>SQL Server</span><span>T-SQL</span><span>Stored Procedures</span><span>Functions</span>
+            <span>Production History</span><span>Serial Validation</span><span>APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <span class="skill-num">04</span>
+          <h3 data-i18n="skillHardware">IoT, dispositivos y prototipado</h3>
+          <div class="skill-pills">
+            <span>Arduino</span><span>ESP32</span><span>ESP8266</span><span>WiFi</span><span>Bluetooth</span>
+            <span>Zebra</span><span>Honeywell</span><span>ZPL</span><span>3D Printing</span><span>CAD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience section-shell section-pad" id="experience">
+      <div class="section-number reveal">05</div>
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="experienceEyebrow">EXPERIENCIA</p>
+        <h2 data-i18n="experienceTitle">Una trayectoria entre electrónica, software y manufactura.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-date" data-i18n="exp1Date">ACTUALIDAD</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-kicker">MANUFACTURING SOFTWARE</span>
+            <h3 data-i18n="exp1Title">Ingeniería de desarrollo / trazabilidad</h3>
+            <p data-i18n="exp1Text">
+              Desarrollo e integración de aplicaciones para manufactura, trazabilidad, comunicación con equipos,
+              bases de datos, etiquetado y validación de procesos.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-date" data-i18n="exp2Date">PROYECTOS</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-kicker">AUTOMATION / IoT</span>
+            <h3 data-i18n="exp2Title">Integración de sistemas industriales</h3>
+            <p data-i18n="exp2Text">
+              Proyectos con PLC, sensores, visión, lectores, impresoras industriales, microcontroladores,
+              movimiento, adquisición de datos y automatización de procesos.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-date" data-i18n="exp3Date">FORMACIÓN</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-kicker">ELECTRONICS ENGINEERING</span>
+            <h3 data-i18n="exp3Title">Ingeniería electrónica</h3>
+            <p data-i18n="exp3Text">
+              Formación en electrónica, programación, control, microcontroladores y diseño de soluciones
+              integradas hardware-software.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact section-shell section-pad" id="contact">
+      <div class="contact-card reveal">
+        <div>
+          <p class="eyebrow" data-i18n="contactEyebrow">CONTACTO</p>
+          <h2 data-i18n-html="contactTitle">¿Tienes una idea que involucre <em>máquinas + software</em>?</h2>
+          <p data-i18n="contactText">
+            Estoy abierto a oportunidades, colaboraciones y proyectos relacionados con automatización,
+            software industrial, IoT, manufactura e impresión 3D.
+          </p>
+        </div>
+
+        <div class="contact-links">
+          <!-- Cambia estos tres enlaces por los tuyos -->
+          <a href="mailto:tu-correo@ejemplo.com">
+            <span>Email</span><strong>tu-correo@ejemplo.com ↗</strong>
+          </a>
+          <a href="#" target="_blank" rel="noopener">
+            <span>LinkedIn</span><strong>Agregar perfil ↗</strong>
+          </a>
+          <a href="#" target="_blank" rel="noopener">
+            <span>GitHub</span><strong>Agregar perfil ↗</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <span>© <span id="year"></span> Jaime</span>
+    <span data-i18n="footerText">Electronic Engineering · Automation · Software · IoT</span>
+    <a href="#home" data-i18n="backTop">Volver arriba ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
