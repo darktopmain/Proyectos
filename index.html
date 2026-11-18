@@ -61,7 +61,7 @@
 
         <div class="hero-actions">
           <a class="button button-dark" href="#projects" data-i18n="viewProjects">Ver proyectos</a>
-          <a class="button button-light" href="#contact" data-i18n="contactMe">Contactarme</a>
+          <a class="button button-light" href="https://wa.me/528991902088" target="_blank" rel="noopener" data-i18n="heroWhatsApp">Escríbeme por WhatsApp</a>
         </div>
 
         <div class="hero-meta">
@@ -148,67 +148,74 @@
           <p class="eyebrow" data-i18n="projectsEyebrow">PROYECTOS SELECCIONADOS</p>
           <h2 data-i18n="projectsTitle">Sistemas que conectan la planta con el software.</h2>
         </div>
-        <p data-i18n="projectsIntro">
-          Una selección de proyectos de automatización, trazabilidad, visión, robótica e IoT.
-        </p>
+        <p data-i18n="projectsIntro">Una selección de proyectos industriales, prototipos y trabajos de diseño CAD e impresión 3D.</p>
       </div>
 
-      <div class="project-list">
-        <article class="project-row reveal">
+      <section class="project-group" aria-labelledby="groupIndustrial">
+        <h3 id="groupIndustrial" data-i18n="groupIndustrial">Automatización y software industrial</h3>
+        <div class="project-list">
+          <article class="project-row reveal">
           <div class="project-index">01</div>
           <div class="project-art art-cad">
             <img src="assets/traza.png" alt="Escáner industrial y pantalla con el historial de producción de una PCB" width="1672" height="941" loading="lazy" decoding="async" />
           </div>
           <div class="project-copy">
             <span class="project-type">INDUSTRIAL SOFTWARE</span>
-            <h3 data-i18n="project1Title">Sistema de trazabilidad industrial</h3>
+            <h4 data-i18n="project1Title">Sistema de trazabilidad industrial</h4>
             <p data-i18n="project1Text">
               Registro y validación de piezas a través de distintas estaciones de manufactura, integrando
               aplicaciones de escritorio, SQL Server, lectores de código y señales de proceso.
             </p>
             <div class="tags"><span>C#</span><span>WPF</span><span>SQL Server</span><span>Traceability</span></div>
+            <details class="project-details">
+              <summary data-i18n="viewCase">Ver proyecto</summary>
+              <dl>
+                <dt data-i18n="caseProblem">Problema</dt>
+                <dd data-i18n="traceProblem">Identificar cada pieza y validar su paso por distintas estaciones de manufactura.</dd>
+                <dt data-i18n="caseWork">Qué desarrollé</dt>
+                <dd data-i18n="traceWork">Integré una aplicación de escritorio en C# y WPF con lectores de códigos, señales de proceso y SQL Server.</dd>
+                <dt data-i18n="caseResult">Resultado</dt>
+                <dd data-i18n="traceResult">El historial por número de serie permite consultar por qué estaciones pasó una pieza y revisar sus registros de validación.</dd>
+              </dl>
+            </details>
           </div>
         </article>
 
-        <article class="project-row reverse reveal">
+          <article class="project-row reverse reveal">
           <div class="project-index">02</div>
           <div class="project-art art-cad">
             <img src="assets/plc.png" alt="Aplicación de control de proceso en una PC conectada a un PLC por Ethernet" width="1672" height="941" loading="lazy" decoding="async" />
           </div>
           <div class="project-copy">
             <span class="project-type">AUTOMATION</span>
-            <h3 data-i18n="project2Title">Integración PC ↔ PLC y control de proceso</h3>
+            <h4 data-i18n="project2Title">Integración PC ↔ PLC y control de proceso</h4>
             <p data-i18n="project2Text">
               Comunicación entre software, PLC, sensores y actuadores para controlar conveyors, validar estados
               de producción y ejecutar secuencias de proceso.
             </p>
             <div class="tags"><span>Omron</span><span>TCP/IP</span><span>C#</span><span>Sensors</span></div>
+            <details class="project-details">
+              <summary data-i18n="viewCase">Ver proyecto</summary>
+              <dl>
+                <dt data-i18n="caseProblem">Problema</dt>
+                <dd data-i18n="plcProblem">Coordinar el software y los equipos de la línea para validar estados y ejecutar secuencias de producción.</dd>
+                <dt data-i18n="caseWork">Qué desarrollé</dt>
+                <dd data-i18n="plcWork">Integré una aplicación en C# con un PLC Omron por TCP/IP para intercambiar señales de sensores y actuadores.</dd>
+                <dt data-i18n="caseResult">Resultado</dt>
+                <dd data-i18n="plcResult">La integración permite consultar estados de producción desde la PC y ejecutar secuencias de control de la banda.</dd>
+              </dl>
+            </details>
           </div>
         </article>
 
-        <article class="project-row reveal">
+          <article class="project-row reveal">
           <div class="project-index">03</div>
-          <div class="project-art art-cad" style="aspect-ratio: 532 / 382;">
-            <img src="assets/agv2.png" alt="" width="532" height="382" loading="lazy" decoding="async" />
-          </div>
-          <div class="project-copy">
-            <span class="project-type">ROBOTICS / IoT</span>
-            <h3 data-i18n="project3Title">Prototipo AGV para pruebas de movimiento</h3>
-            <p data-i18n="project3Text">
-              Plataforma experimental con motores NEMA 17, drivers TB6600 y un ESP32 para probar el movimiento y el control de velocidad mediante comandos de red.
-            </p>
-            <div class="tags"><span>ESP32</span><span>NEMA 17</span><span>TB6600</span><span>HTTP</span></div>
-          </div>
-        </article>
-
-        <article class="project-row reverse reveal">
-          <div class="project-index">04</div>
           <div class="project-art art-cad">
             <img src="assets/Pcb.png" alt="Cámara industrial sobre una PCB con código QR en una banda transportadora" width="1672" height="941" loading="lazy" decoding="async" />
           </div>
           <div class="project-copy">
             <span class="project-type">INDUSTRIAL VISION</span>
-            <h3 data-i18n="project4Title">Visión industrial y lectura de códigos</h3>
+            <h4 data-i18n="project4Title">Visión industrial y lectura de códigos</h4>
             <p data-i18n="project4Text">
               Integración de cámaras y lectores industriales para inspección, identificación de piezas,
               validación de códigos y comunicación con sistemas de producción.
@@ -216,33 +223,59 @@
             <div class="tags"><span>Keyence</span><span>Cognex</span><span>Omron</span><span>QR</span><span>DataMatrix</span></div>
           </div>
         </article>
+        </div>
+      </section>
 
-        <article class="project-row reveal">
+      <section class="project-group" aria-labelledby="groupPrototypes">
+        <h3 id="groupPrototypes" data-i18n="groupPrototypes">Prototipos</h3>
+        <div class="project-list">
+          <article class="project-row reverse reveal">
+          <div class="project-index">04</div>
+          <div class="project-art art-cad" style="aspect-ratio: 532 / 382;">
+            <img src="assets/agv2.png" alt="" width="532" height="382" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-copy">
+            <span class="project-type">ROBOTICS / IoT</span>
+            <h4 data-i18n="project3Title">Prototipo AGV para pruebas de movimiento</h4>
+            <p data-i18n="project3Text">
+              Plataforma experimental con motores NEMA 17, drivers TB6600 y un ESP32 para probar el movimiento y el control de velocidad mediante comandos de red.
+            </p>
+            <div class="tags"><span>ESP32</span><span>NEMA 17</span><span>TB6600</span><span>HTTP</span></div>
+          </div>
+        </article>
+        </div>
+      </section>
+
+      <section class="project-group" aria-labelledby="groupCad">
+        <h3 id="groupCad" data-i18n="groupCad">Diseño CAD e impresión 3D</h3>
+        <div class="project-list">
+          <article class="project-row reveal">
           <div class="project-index">05</div>
           <div class="project-art art-cad">
             <img src="assets/cocina-en-l.png.png" alt="" width="1672" height="941" loading="lazy" decoding="async" />
           </div>
           <div class="project-copy">
             <span class="project-type" data-i18n="cadType">DISEÑO CAD</span>
-            <h3 data-i18n="cad0Title">Cocina en L</h3>
+            <h4 data-i18n="cad0Title">Cocina en L</h4>
             <p data-i18n="cad0Text">Modelado en SOLIDWORKS y visualización 3D de la distribución, los materiales y la iluminación.</p>
             <div class="tags"><span data-i18n="cad0Tag">SOLIDWORKS</span><span data-i18n="cad0Extra">Renderizado 3D</span></div>
           </div>
         </article>
 
-        <article class="project-row reverse reveal">
+          <article class="project-row reverse reveal">
           <div class="project-index">06</div>
           <div class="project-art art-cad">
             <img src="assets/numeros-fachada-330.png.png" alt="" width="1672" height="941" loading="lazy" decoding="async" />
           </div>
           <div class="project-copy">
             <span class="project-type" data-i18n="cadType">DISEÑO CAD</span>
-            <h3 data-i18n="cad1Title">Números personalizados para fachada</h3>
+            <h4 data-i18n="cad1Title">Números personalizados para fachada</h4>
             <p data-i18n="cad1Text">Diseño de números en relieve para impresión 3D, con una visualización del 330 en una fachada residencial.</p>
             <div class="tags"><span data-i18n="cad1Tag">Impresión 3D</span><span data-i18n="cad1Extra">Diseño personalizado</span></div>
           </div>
         </article>
-      </div>
+        </div>
+      </section>
     </section>
 
     <section class="skills section-shell section-pad" id="skills">

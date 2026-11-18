@@ -445,7 +445,7 @@ button { font: inherit; }
   padding: 0 30px;
 }
 
-.project-copy h3 {
+.project-copy h4 {
   font-size: clamp(30px, 3.4vw, 48px);
   line-height: 1.08;
   letter-spacing: -.045em;
@@ -825,4 +825,37 @@ button { font: inherit; }
   display: block;
   width: 100%;
   height: auto;
+}
+
+.project-group + .project-group {
+  margin-top: clamp(2rem, 6vw, 5rem);
+}
+
+.project-group > h3 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  margin: 0 0 1rem;
+}
+
+.project-details {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.project-details summary {
+  cursor: pointer;
+  padding: .75rem 0;
+  font-weight: 700;
+}
+
+.project-details dl {
+  margin: 0 0 1rem;
+}
+
+.project-details dt {
+  margin-top: .75rem;
+  font-weight: 700;
+}
+
+.project-details dd {
+  margin: .2rem 0 0;
 }
