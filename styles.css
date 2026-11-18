@@ -815,3 +815,14 @@ button { font: inherit; }
   .site-footer { align-items:flex-start; flex-direction:column; justify-content:center; padding:30px 0; }
   .cursor-glow { display:none; }
 }
+
+.project-art.art-cad {
+  height: auto;
+  aspect-ratio: 1672 / 941;
+}
+
+.art-cad img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
